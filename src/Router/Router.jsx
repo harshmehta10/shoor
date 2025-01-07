@@ -59,14 +59,6 @@ const Router = () => {
         },
 
         {
-          path: "/contact",
-          element: (
-            <Suspense fallback={<Loader />}>
-              <Contact />,
-            </Suspense>
-          ),
-        },
-        {
           path: "/collection",
           element: (
             <Suspense fallback={<Loader />}>
