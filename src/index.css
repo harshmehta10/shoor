@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* src/styles/global.css */
+@font-face {
+  font-family: "Nexa-bold";
+  src: url("/src/assets/fonts/Nexa Bold.otf");
+}
+
+@font-face {
+  font-family: "Nexa-light";
+  src: url("/src/assets/fonts/Nexa Light.otf");
+}
+
+@font-face {
+  font-family: "Nexa-regular";
+  src: url("/src/assets/fonts/Nexa Regular.otf");
+}
+
+.text-14 {
+  @apply text-xs md:text-sm;
+}
+
+.text-45 {
+  @apply text-xl md:text-3xl lg:text-[45px];
+}
+.text-footer {
+  @apply text-sm md:text-[12px] lg:text-base;
+}
+
+/* Default body font */
