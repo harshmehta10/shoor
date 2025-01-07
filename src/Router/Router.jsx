@@ -14,7 +14,6 @@ const Log = lazy(() => import("../Components/Login/Log"));
 const Register = lazy(() => import("../Components/Login/Register"));
 const ForgetPass = lazy(() => import("../Components/Login/ForgetPass"));
 
-const Contact = lazy(() => import("../Views/Pages/Contact/Contact"));
 const EliteApparel = lazy(() => import("../Components/Elite/EliteApparel"));
 const Classic = lazy(() => import("../Components/Classic/Classic"));
 
