@@ -1,41 +1,20 @@
-/* From Uiverse.io by csozidev */
-/* SVG loader made by: csozi | Website: www.csozi.hu*/
-
-/*You dont need this "p" style*/
-.text {
-  font-weight: bolder;
-  font-size: 17px;
-  color: black;
-  position: absolute;
-  translate: -50% 0px;
-  top: 20px;
-  left: 50%;
-  text-align: center;
+.loader span {
+  font-size: 22px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  animation: blur 3s linear infinite;
+  line-height: 20px;
+  transition: all 0.5s;
+  letter-spacing: 0.2em;
 }
 
-.loader {
-  overflow: visible;
-  height: fit-content;
-  width: fit-content;
-  padding: 20px;
-  display: flex;
-}
-
-.logo {
-  fill: none;
-  stroke-dasharray: 20px;
-  /*<-- Play with this number until it look cool */
-  stroke: black;
-  animation: load 15s infinite linear;
-}
-
-@keyframes load {
-  0% {
-    stroke-dashoffset: 0px;
+@keyframes blur {
+  0%,
+  90% {
+    filter: blur(0);
   }
 
-  100% {
-    stroke-dashoffset: 200px;
-    /* <-- This number should always be 10 times the number up there*/
+  50% {
+    filter: blur(10px);
   }
 }
