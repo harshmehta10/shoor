@@ -58,6 +58,7 @@ const Mobile = ({ isOpen, toggle }) => {
               <Link
                 to={items.path}
                 key={items.Element}
+                onClick={toggle}
                 className="font-nexaReg text-4xl text-white  transition-all duration-500 relative group"
               >
                 {items.Element}

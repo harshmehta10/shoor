@@ -40,7 +40,7 @@ const Gallery = () => {
   return (
     <div>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden z-50 relative">
-        <div className="gap-6 lg:gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="gap-6  md:gap-6 lg:gap-2 xl:gap-4 grid grid-cols-1 md:grid-cols-2 lg:max-w-screen-md xl:max-w-none  mx-auto lg:grid-cols-2 xl:grid-cols-4 ">
           {images.map((items, idx) => (
             <div
               key={idx}
@@ -75,6 +75,7 @@ const Gallery = () => {
               </div>
             </div>
           ))}
+          {/* md:w-[326px] lg:w-[380px] xl:w-[326px] h-[330px] md:h-[330px] lg:h-[380px] xl:h-auto */}
         </div>
       </div>
     </div>

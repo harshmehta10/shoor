@@ -23,7 +23,7 @@ const Inspiration = () => {
           <img src={brownkurta} alt="" className="rounded-full" />
         </div>
         <div className="flex flex-col items-center space-y-4">
-          <h1 className="font-nexalight text-3xl md:4xl lg:text-6xl -ml-60 lg:-ml-80">
+          <h1 className="font-nexalight text-3xl md:4xl lg:text-6xl  lg:-ml-80">
             The Design
           </h1>
 

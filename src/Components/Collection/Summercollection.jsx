@@ -26,7 +26,7 @@ const Summercollection = () => {
   return (
     <div className="flex flex-col">
       <div className="space-y-11 order-last">
-        <div className="flex flex-col lg:flex-row justify-between">
+        <div className="flex flex-col lg:flex-row justify-between gap-10">
           <div className="flex flex-col space-y-16 ">
             <div className="space-y-8">
               <img

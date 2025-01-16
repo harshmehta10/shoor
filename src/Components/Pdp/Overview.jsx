@@ -10,7 +10,7 @@ const Overview = () => {
   return (
     <div>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden space-y-20 lg:space-y-44">
-        <div className="flex flex-col lg:flex-row  lg:justify-around space-y-2">
+        <div className="flex flex-col lg:flex-row gap-10 lg:justify-around xl:justify-around space-y-2">
           <div className="">
             <img
               src={kurta}
