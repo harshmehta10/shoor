@@ -7,6 +7,7 @@ import whitearrowbtn from "../../assets/SVG/whitearrowbtn.svg";
 const Product = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+
   return (
     <div>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden space-y-20 lg:space-y-44">

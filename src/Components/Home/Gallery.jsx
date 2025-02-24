@@ -46,7 +46,7 @@ const Gallery = () => {
               key={idx}
               className={`relative w-[326px] overflow-hidden mx-auto transition-all duration-300 ${
                 hoveredIndex !== null && hoveredIndex !== idx ? "blur-sm" : ""
-              } ${hoveredIndex === idx ? "scale-105 z-20" : ""}`}
+              } ${hoveredIndex === idx ? "scale-105 z-20 cursor-pointer" : ""}`}
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
             >

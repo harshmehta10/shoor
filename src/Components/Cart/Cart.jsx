@@ -1,40 +1,35 @@
-import { React, useState } from "react";
-import brownkurta from "../../assets/Images/pdp/brownkurta.png";
+import React, { useState } from "react";
 import plus from "../../assets/SVG/plus.svg";
 import minus from "../../assets/SVG/minus.svg";
 import crossbtn from "../../assets/SVG/crossbtn.svg";
 import arrowrightwhite from "../../assets/SVG/arrowrightwhite.svg";
-import num from "../../assets/SVG/num.svg";
 import closebtn from "../../assets/SVG/closebtn.svg";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../../app/cartSlice";
 
 const Cart = ({ isOpen, toggle }) => {
-  const prod = [
-    {
-      img: brownkurta,
-      heading: "Saar Kurta",
-      color: "Brown",
-      price: " ₹ 1600",
-      decrese: minus,
-      increase: plus,
-      para: "Lorem Ipsum is simply",
-      btn: crossbtn,
-      number: num,
-    },
-    {
-      img: brownkurta,
-      heading: "Saar Kurta",
-      color: "Brown",
-      price: " ₹ 1600",
-      decrese: minus,
-      increase: plus,
-      para: "Lorem Ipsum is simply",
-      btn: crossbtn,
-      number: num,
-    },
-  ];
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const dispatch = useDispatch();
+
+  const handleRemove = (id) => {
+    console.log("remove");
+    dispatch(removeFromCart(id));
+  };
+
+  // Calculate total items by summing the quantity of each item.
+  const totalItems = cartItems.reduce(
+    (sum, item) => sum + (item.quantity || 1),
+    0
+  );
+
   return (
-    <div className="absolute z-[999] top-0 right-0 bg-white w-[500px] ">
-      <div className="absolute top-0 -left-5">
+    <div className="absolute z-[999] -top-5 lg:top-0 -right-5 lg:right-0 bg-white w-[300px] lg:w-[500px]">
+      <div className="absolute top-5 lg:top-0 -left-5">
         <img
           src={closebtn}
           alt="closebtn"
@@ -42,81 +37,93 @@ const Cart = ({ isOpen, toggle }) => {
           onClick={toggle}
         />
       </div>
-      {isOpen && (
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden space-y-10">
-          <div>
-            <h1 className="font-nexaReg text-base text-center">
-              Your shopping cart (4 Items)
-            </h1>
-          </div>
-          <div className="space-y-7">
-            {prod.map((items, idx) => (
-              <div
-                key={idx}
-                className={`${
-                  idx === 0 ? " border-b border-black border-opacity-20" : ""
-                } flex gap-12 pb-10`}
-              >
-                <div className="flex gap-12">
-                  <div>
-                    <img src={items.img} alt="" className="w-20 h-24" />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex gap-20">
-                      <h1 className="font-nexabold text-base">
-                        {items.heading}
-                      </h1>
-                      <h1 className="font-nexaReg text-base">{items.price}</h1>
+      {cartItems.length === 0 ? (
+        <div className="flex justify-center items-center h-[500px]">
+          <h2 className="text-2xl font-nexaReg ">Your cart is empty.</h2>
+        </div>
+      ) : (
+        isOpen && (
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden space-y-10">
+            <div>
+              <h1 className="font-nexaReg text-sm lg:text-base text-center">
+                Your shopping cart ({totalItems} items)
+              </h1>
+            </div>
+            <div className="space-y-7">
+              {cartItems.map((items, idx) => (
+                <div
+                  key={idx}
+                  className={`${
+                    idx === 0 ? "border-b border-black border-opacity-20" : ""
+                  } flex gap-12 pb-10`}
+                >
+                  <div className="flex gap-6 lg:gap-12">
+                    <div>
+                      <img
+                        src={items.icon}
+                        alt={items.title}
+                        className="w-20 h-24"
+                      />
                     </div>
-                    <p className="text-[#898989] font-roboto font-light text-xs">
-                      {items.para}
-                    </p>
-                    <p className="text-[#898989] font-roboto font-light text-xs">
-                      Color : {items.color}
-                    </p>
-                    <div className="flex gap-20 ">
-                      <div className="flex gap-5 items-center">
-                        <div className="w-3">
-                          <img src={items.decrese} alt="" />
-                        </div>
-                        <div>
-                          <img
-                            src={items.number}
-                            alt=""
-                            className="border p-2"
-                          />
-                        </div>
-                        <div>
-                          <img src={items.increase} alt="" />
-                        </div>
+                    <div className="space-y-1">
+                      <div className="flex gap-8 lg:gap-20">
+                        <h1 className="font-nexabold text-sm lg:text-base">
+                          {items.title}
+                        </h1>
+                        <h1 className="font-nexaReg text-sm lg:text-base">
+                          {items.price}
+                        </h1>
                       </div>
-                      <div className="flex justify-end ">
-                        <img src={items.btn} alt="" />
+                      <p className="text-[#898989] font-roboto font-light text-xs">
+                        {items.description}
+                      </p>
+
+                      <div className="flex gap-20">
+                        <div className="flex gap-5 items-center">
+                          <div
+                            className="w-3 cursor-pointer"
+                            onClick={() => dispatch(decreaseQuantity(items.id))}
+                          >
+                            <img src={minus} alt="Decrease quantity" />
+                          </div>
+                          <div>{items.quantity}</div>
+                          <div
+                            className="cursor-pointer"
+                            onClick={() => dispatch(increaseQuantity(items.id))}
+                          >
+                            <img src={plus} alt="Increase quantity" />
+                          </div>
+                        </div>
+
+                        <div className="flex justify-end">
+                          <button onClick={() => handleRemove(items.id)}>
+                            <img src={crossbtn} alt="Remove" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              ))}
+            </div>
+            {cartItems.length > 0 && (
+              <div className="flex justify-center items-center gap-10">
+                <div className="border-r border-opacity-20 pr-9">
+                  <p className="font-nexaReg text-base">Shipping</p>
+                  <p className="font-nexaReg text-base">Subtotal</p>
+                </div>
+                <div>
+                  <p className="font-nexaReg text-base">Free</p>
+                  <p className="font-nexaReg text-base">₹ {totalAmount}</p>
+                </div>
               </div>
-            ))}
-          </div>
-          <div className="flex justify-center  items-center gap-10">
-            <div className="border-r border-opacity-20 pr-9">
-              <p className="font-nexaReg text-base">Items</p>
-              <p className="font-nexaReg text-base">Shipping</p>
-              <p className="font-nexaReg text-base">Subtotal</p>
-            </div>
+            )}
 
-            <div>
-              <p className="font-nexaReg text-base">₹ 6,400.00</p>
-              <p className="font-nexaReg text-base">Free</p>
-              <p className="font-nexaReg text-base">₹ 6,400.00</p>
-            </div>
+            <button className="flex justify-center bg-black text-white py-4 w-full gap-16 font-nexabold text-base">
+              Checkout <img src={arrowrightwhite} alt="Checkout" />
+            </button>
           </div>
-
-          <button className="flex justify-center bg-black text-white py-4  w-full gap-16 font-nexabold text-base">
-            Checkout <img src={arrowrightwhite} alt="" />
-          </button>
-        </div>
+        )
       )}
     </div>
   );

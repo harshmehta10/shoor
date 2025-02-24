@@ -7,12 +7,13 @@ import Pdp from "../Pages/Pdp/Pdp";
 
 const Layout = () => {
   const location = useLocation();
-  const ispdp = location.pathname === "/Pdp";
+  const ispdp = location.pathname.startsWith("/Pdp/");
   const isEliteApparel = location.pathname === "/elite";
   const isClassicFootwear = location.pathname === "/classic";
   const isOrganicGrooming = location.pathname === "/organic";
   const shouldApplyBlackHeader =
     ispdp || isEliteApparel || isClassicFootwear || isOrganicGrooming;
+  console.log(ispdp, isEliteApparel, isClassicFootwear, isOrganicGrooming);
   return (
     <>
       {shouldApplyBlackHeader ? <BlackHeader /> : <Header />}

@@ -1,9 +1,58 @@
 import { useState, React } from "react";
 import kurta from "../../assets/Images/Collection/kurta.png";
+import kurta1 from "../../assets/Images/Collection/kurta1.jpg";
+import kurta2 from "../../assets/Images/Collection/kurta2.webp";
+import kurta3 from "../../assets/Images/Collection/kurta3.webp";
+import kurta4 from "../../assets/Images/Collection/kurta4.webp";
+import greenkurta from "../../assets/Images/Collection/greenkurta.webp";
 import { Link } from "react-router";
 
 const SaarKurta = () => {
-  const kurtaData = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const kurtaData = [
+    {
+      id: 1,
+      icon: kurta,
+      title: "Classic Kurta",
+      price: "₹ 1600",
+      description: "Elegant and stylish",
+    },
+    {
+      id: 2,
+      icon: greenkurta,
+      title: "Green Charm",
+      price: "₹ 1500",
+      description: "Comfort meets tradition",
+    },
+    {
+      id: 3,
+      icon: kurta1,
+      title: "Royal Attire",
+      price: "₹ 1700",
+      description: "Premium fabric design",
+    },
+    {
+      id: 4,
+      icon: kurta2,
+      title: "Minimal Kurta",
+      price: "₹ 1400",
+      description: "Simple yet elegant",
+    },
+    {
+      id: 5,
+      icon: kurta3,
+      title: "Festive Wear",
+      price: "₹ 1800",
+      description: "Perfect for celebrations",
+    },
+    {
+      id: 6,
+      icon: kurta4,
+      title: "Casual Comfort",
+      price: "₹ 1200",
+      description: "Soft and breathable",
+    },
+  ];
+
   const [hoveredIndex, setHoveredIndex] = useState(null);
   return (
     <div>
@@ -21,18 +70,29 @@ const SaarKurta = () => {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <Link
-                to="/Pdp"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                to={`/Pdp/${items.id}`}
+                // onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
+                className="space-y-2"
               >
-                <img src={kurta} alt="" className="mx-auto py" />
+                {console.log(items.id)}
+                <img
+                  src={items.icon}
+                  alt={items.title}
+                  className="mx-auto w-[50%]"
+                />
+
+                <div className="space-y-1 text-center">
+                  <p className="font-nexabold text-sm lg:text-base">
+                    {items.title}
+                  </p>
+                  <p className="font-roboto font-light text-14">
+                    {items.description}
+                  </p>
+                  <p className="font-roboto font-light text-14 ">
+                    {items.price}
+                  </p>
+                </div>
               </Link>
-              <div className="space-y-2 text-center">
-                <p className="font-nexabold text-sm lg:text-base">Saar Kurta</p>
-                <p className="font-roboto font-light text-14">
-                  Lorem Ipsum is simply
-                </p>
-                <p className="font-roboto font-light text-14 "> ₹ 1600</p>
-              </div>
             </div>
           ))}
         </div>

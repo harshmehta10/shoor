@@ -1,10 +1,11 @@
-import { React, useState, useRef } from "react";
+import { React, useState, useRef, useEffect } from "react";
 import hero from "../../assets/Images/Home/hero.png";
 import arrowbtn from "../../assets/SVG/arrowbtn.svg";
 import { Link, Links } from "react-router";
 import productvideo from "../../assets/videos/productvideo.mp4";
 import ReactPlayer from "react-player";
 import whitearrowbtn from "../../assets/SVG/whitearrowbtn.svg";
+import bgposter from "../../assets/bgposter.jpeg";
 
 const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -45,6 +46,7 @@ const Hero = () => {
       {/* Overlay */}
 
       <div className="bg-black w-full h-full absolute bg-opacity-40 z-50"></div>
+      <img className="absolute h-full w-full object-cover" alt="img" />
 
       {/* Video */}
       <video
@@ -55,6 +57,7 @@ const Hero = () => {
         controls={false}
         loop
         className="absolute h-full w-full object-cover"
+        poster={bgposter}
       ></video>
 
       {/* Play/Pause Button */}
@@ -130,15 +133,34 @@ const Hero = () => {
               to="/collection"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <button
-                className={`bg-white text-black font-nexabold py-3 lg:py-5 px-3 lg:px-5 flex items-center gap-10 lg:gap-20 text-xs md:text-sm lg:text-base ${
-                  isHovered ? "hover:text-white hover:bg-black" : ""
-                }`}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
+              <button className="bg-white text-black font-nexabold py-3 lg:py-5 px-3 lg:px-5 flex items-center gap-10 lg:gap-20 text-xs md:text-sm lg:text-base group hover:text-white hover:bg-black transition-all duration-700 ease-in-out ">
                 SHOP NOW
-                <img src={isHovered ? whitearrowbtn : arrowbtn} alt="" />
+                <svg
+                  width="62"
+                  height="22"
+                  viewBox="0 0 62 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    y1="10.8989"
+                    x2="59"
+                    y2="10.8989"
+                    stroke="black"
+                    stroke-width="2"
+                    className="transition-all  ease-in-out duration-700 group-hover:stroke-white"
+                  />
+                  <path
+                    d="M49.8996 20.7984L59.7991 10.8989L49.8996 0.999431"
+                    stroke="black"
+                    stroke-width="2"
+                    className="transition-all ease-in-out duration-700 group-hover:stroke-white"
+                  />
+                </svg>
+                {/* <img
+                  src={isHovered ? whitearrowbtn : arrowbtn}
+                  alt="arrow btn"
+                /> */}
               </button>
             </Link>
           </div>

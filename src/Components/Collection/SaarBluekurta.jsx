@@ -3,6 +3,12 @@ import Slider from "react-slick";
 import bluekurta from "../../assets/Images/Collection/bluekurta.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import kurta from "../../assets/Images/Collection/kurta.png";
+import kurta1 from "../../assets/Images/Collection/kurta1.jpg";
+import kurta2 from "../../assets/Images/Collection/kurta2.webp";
+import kurta3 from "../../assets/Images/Collection/kurta3.webp";
+import kurta4 from "../../assets/Images/Collection/kurta4.webp";
+import greenkurta from "../../assets/Images/Collection/greenkurta.webp";
 
 const SaarBluekurta = () => {
   const settings = {
@@ -14,13 +20,14 @@ const SaarBluekurta = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+  const photos = [kurta, kurta1, kurta2, kurta3, kurta4, greenkurta];
 
   // Custom Next Arrow
   function NextArrow(props) {
     const { onClick } = props;
     return (
       <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-10"
+        className="absolute top-1/2 -right-5 lg:right-4 transform -translate-y-1/2 bg-gray-800 text-white py-1 px-2 lg:py-2 lg:px-3 rounded-3xl lg:rounded-full z-10"
         onClick={onClick}
       >
         {"→"}
@@ -33,7 +40,7 @@ const SaarBluekurta = () => {
     const { onClick } = props;
     return (
       <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-3xl lg:rounded-full z-10"
+        className="absolute top-1/2 -left-5 lg:left-4 transform -translate-y-1/2 bg-gray-800 text-white py-1 px-2 lg:px-3 lg:py-2 rounded-3xl lg:rounded-full z-10"
         onClick={onClick}
       >
         {"←"}
@@ -57,14 +64,14 @@ const SaarBluekurta = () => {
           </div>
 
           {/* Slider */}
-          <div className="relative w-full">
+          <div className="relative w-2/3 mx-auto">
             <Slider {...settings}>
-              {[1, 2, 3, 4, 5].map((_, index) => (
+              {photos.map((items, index) => (
                 <div key={index}>
                   <img
-                    src={bluekurta}
+                    src={items}
                     alt={`Slide ${index + 1}`}
-                    className="w-full"
+                    className=" mx-auto lg:w-1/2  lg:h-1/2"
                   />
                 </div>
               ))}

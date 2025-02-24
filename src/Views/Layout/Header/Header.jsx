@@ -6,6 +6,7 @@ import questionmark from "../../../assets/SVG/questionmark.svg";
 import location from "../../../assets/SVG/location.svg";
 import cart from "../../../assets/SVG/cart.svg";
 import Cart from "../../../Components/Cart/Cart";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -44,6 +45,11 @@ const Header = () => {
       document.body.style.overflow = "auto";
     };
   }, [menu]);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalItems = cartItems.reduce(
+    (sum, item) => sum + (item.quantity || 1),
+    0
+  );
   return (
     <>
       <Mobile isOpen={menu} toggle={toggle} />
@@ -72,15 +78,13 @@ const Header = () => {
               <img src={logo} alt="logo" className="relative z-[100]" />
             </Link>
 
-            <div className="hidden lg:flex items-center gap-3 relative z-[100] ">
-              {/* <img
-                src={halfcircle}
-                alt="halfcircle"
-                className="cursor-pointer"
-              /> */}
-              <img src={questionmark} alt="help" className="cursor-pointer" />
-              <img src={location} alt="location" className="cursor-pointer" />
+            <div className=" lg:flex items-center gap-3 relative z-[100] ">
               <div className="relative">
+                {totalItems > 0 && (
+                  <div className="absolute -right-3 -top-2 bg-black text-white rounded-full flex justify-center text-xs size-5 items-center">
+                    {totalItems}
+                  </div>
+                )}
                 <img
                   src={cart}
                   alt="cart"

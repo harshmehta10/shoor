@@ -23,8 +23,6 @@ const open =
 const paths = [close, open];
 
 const Connect = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
   const [pathIndex, setPathIndex] = useState(0);
   const progress = useMotionValue(pathIndex);
   const path = useFlubber(progress, paths);
@@ -50,8 +48,8 @@ const Connect = () => {
     <div>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden">
         <div className="space-y-5">
-          <div className="border border-black rounded-full flex justify-center items-center size-36 mx-auto">
-            <img src={message} alt="" className=" " />
+          <div className="border border-black rounded-full flex justify-center items-center size-36 mx-auto group hover:bg-black transition-all  ease-in-out duration-500">
+            {/* <img src={message} alt="message" className=" " /> */}
             {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -68,6 +66,30 @@ const Connect = () => {
                 d={path}
               />
             </svg> */}
+            <svg
+              width="70"
+              height="47"
+              viewBox="0 0 70 47"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1"
+                y="1"
+                width="68"
+                height="44.6667"
+                rx="6"
+                stroke="black"
+                stroke-width="2"
+                className="transition-all  ease-in-out duration-500 group-hover:stroke-white"
+              />
+              <path
+                d="M7.5 9.16675L34.5833 27.5001L61.6667 9.16675"
+                stroke="black"
+                stroke-width="1.5"
+                className="transition-all  ease-in-out duration-500 group-hover:stroke-white"
+              />
+            </svg>
           </div>
           <div className="flex flex-col justify-center items-center space-y-7">
             <h1 className="text-center text-14 font-nexabold">STAY IN TOUCH</h1>
@@ -75,7 +97,7 @@ const Connect = () => {
               Sign up for our newsletter to receive customized product news,
               updates and special invites.
             </p>
-            <button
+            {/* <button
               className={`bg-white text-black font-nexabold py-3 lg:py-5 px-3 lg:px-5 flex items-center gap-10 lg:gap-20 text-xs md:text-sm lg:text-base  border-black border-2 ${
                 isHovered ? "hover:text-white hover:bg-black" : ""
               }`}
@@ -84,6 +106,31 @@ const Connect = () => {
             >
               SUBSCRIBE
               <img src={isHovered ? whitearrowbtn : arrowbtn} alt="" />
+            </button> */}
+            <button className="bg-white text-black font-nexabold py-3 lg:py-5 px-3 lg:px-5 flex items-center gap-10 lg:gap-20 text-xs md:text-sm lg:text-base border-black border-2  group hover:text-white hover:bg-black transition-all duration-700 ease-in-out ">
+              SUBSCRIBE
+              <svg
+                width="62"
+                height="22"
+                viewBox="0 0 62 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  y1="10.8989"
+                  x2="59"
+                  y2="10.8989"
+                  stroke="black"
+                  stroke-width="2"
+                  className="transition-all  ease-in-out duration-700 group-hover:stroke-white"
+                />
+                <path
+                  d="M49.8996 20.7984L59.7991 10.8989L49.8996 0.999431"
+                  stroke="black"
+                  stroke-width="2"
+                  className="transition-all ease-in-out duration-700 group-hover:stroke-white"
+                />
+              </svg>
             </button>
           </div>
         </div>

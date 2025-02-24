@@ -16,6 +16,7 @@ const ForgetPass = lazy(() => import("../Components/Login/ForgetPass"));
 
 const EliteApparel = lazy(() => import("../Components/Elite/EliteApparel"));
 const Classic = lazy(() => import("../Components/Classic/Classic"));
+import { kurtaData } from "../Utlis/kurtaData";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -66,10 +67,10 @@ const Router = () => {
           ),
         },
         {
-          path: "/Pdp",
+          path: "/Pdp/:id",
           element: (
             <Suspense fallback={<Loader />}>
-              <Pdp />
+              <Pdp kurtaData={kurtaData} />
             </Suspense>
           ),
         },

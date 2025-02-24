@@ -5,6 +5,7 @@ import blackcart from "../../../assets/SVG/blackcart.svg";
 import Mobile from "./Mobile";
 import Cart from "../../../Components/Cart/Cart";
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
 
 const BlackHeader = () => {
   const [menu, setMenu] = useState(false);
@@ -43,6 +44,12 @@ const BlackHeader = () => {
       document.body.style.overflow = "auto";
     };
   }, [menu]);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalItems = cartItems.reduce(
+    (sum, item) => sum + (item.quantity || 1),
+    0
+  );
+
   return (
     <>
       <Mobile isOpen={menu} toggle={toggle} />
@@ -74,28 +81,40 @@ const BlackHeader = () => {
               <img src={logoblack} alt="logo" className="" />
             </Link>
 
-            <div className="hidden lg:flex items-center gap-3  ">
-              <img src={questionmarkblack} alt="" />
-
+            <div className="flex items-center gap-3  ">
               <div className="relative">
+                {totalItems > 0 && (
+                  <div className="absolute -right-3 -top-2 bg-black text-white rounded-full flex justify-center text-xs size-5 items-center">
+                    {totalItems}
+                  </div>
+                )}
                 <img
                   src={blackcart}
                   alt="cart"
                   className="cursor-pointer"
                   onClick={handleclick}
                 />
+
                 {open && <Cart isOpen={open} toggle={handleclick} />}
               </div>
             </div>
           </nav>
           <div className="flex justify-center  items-center gap-12 text-center md:text-start border py-4 w-full">
-            <h1 className="text-black font-nexaReg text-14 ">ELITE APPAREL</h1>
-            <h1 className="text-black font-nexaReg text-14">
-              CLASSIC FOOTWEAR
-            </h1>
-            <h1 className="text-black font-nexaReg text-14">
-              ORGANIC GROOMING
-            </h1>
+            <Link to="/elite">
+              <h1 className="text-black font-nexaReg text-14 ">
+                ELITE APPAREL
+              </h1>
+            </Link>
+            <Link to="/classic">
+              <h1 className="text-black font-nexaReg text-14">
+                CLASSIC FOOTWEAR
+              </h1>
+            </Link>
+            <Link to="/organic">
+              <h1 className="text-black font-nexaReg text-14">
+                ORGANIC GROOMING
+              </h1>
+            </Link>
           </div>
         </div>
       </div>

@@ -4,11 +4,21 @@ import Specs from "../../../Components/Pdp/Specs";
 import Silverkurta from "../../../Components/Pdp/Silverkurta";
 import Inspiration from "../../../Components/Pdp/Inspiration";
 import Overview from "../../../Components/Pdp/Overview";
+import { useParams } from "react-router-dom";
+import SaarKurta from "../../../Components/Collection/SaarKurta";
+import SimilarProductsCarousel from "../../../Components/Pdp/SimilarProductsCarousel";
 
-const Pdp = () => {
+const Pdp = ({ kurtaData }) => {
+  const { id } = useParams();
+  const selectedKurta = kurtaData.find((kurta) => kurta.id === parseInt(id));
+
+  if (!selectedKurta) {
+    return <p>Product not found!</p>;
+  }
   return (
     <div>
-      <Overview />
+      <Overview {...selectedKurta} />
+      <SimilarProductsCarousel />
       <Inspiration />
       <Silverkurta />
       <Specs />
