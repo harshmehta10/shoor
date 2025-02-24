@@ -1,7 +1,8 @@
 import { React, useState, useRef } from "react";
 import Silverkurtafront from "../../assets/Images/pdp/silverkurtafront.png";
 import Silverkurtaside from "../../assets/Images/pdp/silverkurtaside.png";
-import whitekurtapdp from "../../assets/Images/pdp/whitekurtapdp.png";
+import kurta9 from "../../assets/Images/pdp/kurta9.webp";
+import kurta10 from "../../assets/Images/pdp/kurta10.webp";
 import productvideo from "../../assets/videos/productvideo.mp4";
 
 const Silverkurta = () => {
@@ -40,9 +41,9 @@ const Silverkurta = () => {
           </div>
           <div>
             <img
-              src={Silverkurtafront}
+              src={kurta9}
               alt=""
-              className="object-cover h-full"
+              className="object-cover size-[400px] md:size-[500px] lg:size-[675px] object-top"
             />
           </div>
         </div>
@@ -67,7 +68,11 @@ const Silverkurta = () => {
           </div>
 
           <div className="order-first">
-            <img src={Silverkurtaside} alt="" className="object-cover h-full" />
+            <img
+              src={kurta10}
+              alt=""
+              className="object-cover size-[400px] md:size-[500px] lg:size-[675px] object-top"
+            />
           </div>
         </div>
       </div>
