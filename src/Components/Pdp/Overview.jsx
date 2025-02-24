@@ -25,7 +25,7 @@ const Overview = ({ id, icon, title, price, description }) => {
 
   return (
     <div>
-      <div className="max-w-screen-2xl mx-auto hidden lg:relative">
+      <div className="max-w-screen-2xl mx-auto relative">
         {showPopup && (
           <div className="absolute top-0 right-8 bg-black text-white py-2 px-4 rounded shadow flex items-center">
             Added to Cart!

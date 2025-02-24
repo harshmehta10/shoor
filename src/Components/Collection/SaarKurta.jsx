@@ -71,7 +71,7 @@ const SaarKurta = () => {
             >
               <Link
                 to={`/Pdp/${items.id}`}
-                // onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
+                onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
                 className="space-y-2"
               >
                 {console.log(items.id)}
@@ -80,7 +80,6 @@ const SaarKurta = () => {
                   alt={items.title}
                   className="mx-auto w-[50%]"
                 />
-
                 <div className="space-y-1 text-center">
                   <p className="font-nexabold text-sm lg:text-base">
                     {items.title}
