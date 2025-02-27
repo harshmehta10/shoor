@@ -1,10 +1,9 @@
 import React, { lazy, Suspense } from "react";
-
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Layout from "../Views/Layout/Layout";
 import Loader from "../Views/Layout/Loader/Loader";
 import Error from "../Views/Layout/Loader/Error";
-import Collection from "../Views/Pages/Collection/Collection";
+const Collection = lazy(() => import("../Views/Pages/Collection/Collection"));
 // import Home from "../Views/Pages/Home/Home";
 // import Services from "../Views/Pages/Services/Services";
 // import Contact from "../Views/Pages/Contact/Contact";
@@ -13,10 +12,13 @@ const Home = lazy(() => import("../Views/Pages/Home/Home"));
 const Log = lazy(() => import("../Components/Login/Log"));
 const Register = lazy(() => import("../Components/Login/Register"));
 const ForgetPass = lazy(() => import("../Components/Login/ForgetPass"));
-
 const EliteApparel = lazy(() => import("../Components/Elite/EliteApparel"));
 const Classic = lazy(() => import("../Components/Classic/Classic"));
 import { kurtaData } from "../Utlis/kurtaData";
+const Checkout = lazy(() => import("../Views/Pages/Checkout/Checkout"));
+const OrderPlaced = lazy(() =>
+  import("../Views/Pages/OrderPlaced/OrderPlaced")
+);
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -75,6 +77,22 @@ const Router = () => {
           ),
         },
       ],
+    },
+    {
+      path: "/checkout",
+      element: (
+        <Suspense fallback={<Loader />}>
+          <Checkout />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/pay",
+      element: (
+        <Suspense fallback={<Loader />}>
+          <OrderPlaced />
+        </Suspense>
+      ),
     },
     {
       path: "/login",

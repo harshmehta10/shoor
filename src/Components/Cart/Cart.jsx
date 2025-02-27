@@ -10,6 +10,7 @@ import {
   increaseQuantity,
   decreaseQuantity,
 } from "../../app/cartSlice";
+import { Link } from "react-router";
 
 const Cart = ({ isOpen, toggle }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -28,7 +29,7 @@ const Cart = ({ isOpen, toggle }) => {
   );
 
   return (
-    <div className="absolute z-[999] -top-5 lg:top-0 -right-5 lg:right-0 bg-white w-[300px] lg:w-[500px]">
+    <div className="absolute z-[999] -top-5 lg:-top-2 -right-5 lg:-right-5 bg-white w-[300px] lg:w-[500px]">
       <div className="absolute top-5 lg:top-0 -left-5">
         <img
           src={closebtn}
@@ -107,7 +108,7 @@ const Cart = ({ isOpen, toggle }) => {
               ))}
             </div>
             {cartItems.length > 0 && (
-              <div className="flex justify-center items-center gap-10">
+              <div className="flex justify-center items-center gap-10 pb-5">
                 <div className="border-r border-opacity-20 pr-9">
                   <p className="font-nexaReg text-base">Shipping</p>
                   <p className="font-nexaReg text-base">Subtotal</p>
@@ -119,9 +120,11 @@ const Cart = ({ isOpen, toggle }) => {
               </div>
             )}
 
-            <button className="flex justify-center bg-black text-white py-4 w-full gap-16 font-nexabold text-base">
-              Checkout <img src={arrowrightwhite} alt="Checkout" />
-            </button>
+            <Link to="/checkout">
+              <button className="flex justify-center bg-black text-white py-4 w-full gap-16 font-nexabold text-base">
+                Checkout <img src={arrowrightwhite} alt="Checkout" />
+              </button>
+            </Link>
           </div>
         )
       )}

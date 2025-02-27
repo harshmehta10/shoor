@@ -20,7 +20,7 @@ const SaarBluekurta = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
-  const photos = [kurta, kurta1, kurta2, kurta3, kurta4, greenkurta];
+  const photos = [kurta1, kurta2, kurta3, kurta4, greenkurta];
 
   // Custom Next Arrow
   function NextArrow(props) {

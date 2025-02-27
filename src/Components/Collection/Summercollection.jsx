@@ -30,10 +30,10 @@ const Summercollection = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col max-w-screen-2xl mx-auto overflow-x-hidden">
       <div className="space-y-11 order-last">
         <div className="flex flex-col lg:flex-row justify-between gap-10">
-          <div className="flex flex-col space-y-16 ">
+          <div className="flex flex-col space-y-16">
             <div className="space-y-8 ">
               <img
                 src={images[currentIndex]}
@@ -41,7 +41,7 @@ const Summercollection = () => {
                 className="w-[800px] h-[650px] object-cover"
               />
 
-              <div className="flex justify-end gap-40 px-5 lg:px-0">
+              <div className="flex justify-center lg:justify-end gap-40 px-5 lg:px-0">
                 <button onClick={handlePrev}>
                   <img src={blackleftarr} alt="" />
                 </button>
@@ -57,7 +57,7 @@ const Summercollection = () => {
               ever since the 1500s, when an unknown printer.
             </p>
           </div>
-          <div className="space-y-16  flex flex-col items-end justify-end">
+          <div className="space-y-16  flex flex-col items-center lg:items-end justify-center lg:justify-end">
             <img
               src={kurta7back}
               alt="kurtaback"
@@ -75,7 +75,7 @@ const Summercollection = () => {
             />
           </div>
         </div>
-        <div className="flex gap-1 lg:gap-11 justify-end">
+        <div className="flex gap-1 lg:gap-11 md:justify-center lg:justify-end">
           <img
             src={kurta7arms}
             alt="kurtaarms"

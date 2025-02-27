@@ -5,7 +5,7 @@ import logoblack from "../../assets/SVG/logoblack.svg";
 const ForgetPass = () => {
   return (
     <div className="relative">
-      <div className=" max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14  pb-14 space-y-14 overflow-hidden flex flex-col items-center justify-center">
+      <div className=" max-w-screen-2xl mx-auto  px-4 sm:px-8 py-7 sm:py-14  pb-14 space-y-14 overflow-hidden flex flex-col items-center justify-center ">
         <Link to="/">
           <img
             src={logoblack}
@@ -13,7 +13,7 @@ const ForgetPass = () => {
             className="absolute -translate-x-1/2 top-5"
           />
         </Link>
-        <div className="flex flex-col items-center space-y-6">
+        <div className="flex flex-col items-center space-y-6 ">
           <p className="font-nexabold text-sm">YOUR ACCOUNT</p>
           <h1 className="font-nexalight text-[35px]">Forget your password</h1>
         </div>

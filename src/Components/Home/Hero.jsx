@@ -46,7 +46,7 @@ const Hero = () => {
       {/* Overlay */}
 
       <div className="bg-black w-full h-full absolute bg-opacity-40 z-50"></div>
-      <img className="absolute h-full w-full object-cover" alt="img" />
+      <img className="absolute h-screen w-full object-cover" alt="img" />
 
       {/* Video */}
       <video
