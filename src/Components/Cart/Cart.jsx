@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import plus from "../../assets/SVG/plus.svg";
 import minus from "../../assets/SVG/minus.svg";
 import crossbtn from "../../assets/SVG/crossbtn.svg";
@@ -28,8 +28,24 @@ const Cart = ({ isOpen, toggle }) => {
     0
   );
 
+  // Compute unique items count based on item.id
+  const uniqueItemsCount = new Set(cartItems.map((item) => item.id)).size;
+
+  // Disable background scrolling when the cart is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    // Clean up in case the component unmounts
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
-    <div className="absolute z-[999] -top-5 lg:-top-2 -right-5 lg:-right-5 bg-white w-[300px] lg:w-[500px]">
+    <div className="absolute z-[999] -top-5 lg:-top-2 -right-5 lg:-right-5 bg-white w-[300px] lg:w-[500px] h-[600px]">
       <div className="absolute top-5 lg:top-0 -left-5">
         <img
           src={closebtn}
@@ -40,7 +56,7 @@ const Cart = ({ isOpen, toggle }) => {
       </div>
       {cartItems.length === 0 ? (
         <div className="flex justify-center items-center h-[500px]">
-          <h2 className="text-2xl font-nexaReg ">Your cart is empty.</h2>
+          <h2 className="text-2xl font-nexaReg">Your cart is empty.</h2>
         </div>
       ) : (
         isOpen && (
@@ -50,8 +66,14 @@ const Cart = ({ isOpen, toggle }) => {
                 Your shopping cart ({totalItems} items)
               </h1>
             </div>
-            <div className="space-y-7">
-              {cartItems.map((items, idx) => (
+
+            {/* Items Section: make scrollable if more than 2 unique items */}
+            <div
+              className={`space-y-7 ${
+                uniqueItemsCount > 2 ? "max-h-[300px] overflow-y-auto" : ""
+              }`}
+            >
+              {cartItems.map((item, idx) => (
                 <div
                   key={idx}
                   className={`${
@@ -61,43 +83,43 @@ const Cart = ({ isOpen, toggle }) => {
                   <div className="flex gap-6 lg:gap-12">
                     <div>
                       <img
-                        src={items.icon}
-                        alt={items.title}
+                        src={item.icon}
+                        alt={item.title}
                         className="w-20 h-24"
                       />
                     </div>
                     <div className="space-y-1">
                       <div className="flex gap-8 lg:gap-20">
                         <h1 className="font-nexabold text-sm lg:text-base">
-                          {items.title}
+                          {item.title}
                         </h1>
                         <h1 className="font-nexaReg text-sm lg:text-base">
-                          {items.price}
+                          {item.price}
                         </h1>
                       </div>
                       <p className="text-[#898989] font-roboto font-light text-xs">
-                        {items.description}
+                        {item.description}
                       </p>
 
                       <div className="flex gap-20">
                         <div className="flex gap-5 items-center">
                           <div
                             className="w-3 cursor-pointer"
-                            onClick={() => dispatch(decreaseQuantity(items.id))}
+                            onClick={() => dispatch(decreaseQuantity(item.id))}
                           >
                             <img src={minus} alt="Decrease quantity" />
                           </div>
-                          <div>{items.quantity}</div>
+                          <div>{item.quantity}</div>
                           <div
                             className="cursor-pointer"
-                            onClick={() => dispatch(increaseQuantity(items.id))}
+                            onClick={() => dispatch(increaseQuantity(item.id))}
                           >
                             <img src={plus} alt="Increase quantity" />
                           </div>
                         </div>
 
                         <div className="flex justify-end">
-                          <button onClick={() => handleRemove(items.id)}>
+                          <button onClick={() => handleRemove(item.id)}>
                             <img src={crossbtn} alt="Remove" />
                           </button>
                         </div>
@@ -107,6 +129,7 @@ const Cart = ({ isOpen, toggle }) => {
                 </div>
               ))}
             </div>
+
             {cartItems.length > 0 && (
               <div className="flex justify-center items-center gap-10 pb-5">
                 <div className="border-r border-opacity-20 pr-9">

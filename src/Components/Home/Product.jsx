@@ -27,37 +27,41 @@ const Product = () => {
                 Discover the handcrafted amalgamation of tradition art and
                 age-old craftmanship with tendy styles and silhouettes.{" "}
               </p>
-              <Link
-                to="/collection"
-                onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
-              >
-                <button
-                  className="relative text-black font-nexabold py-3 lg:py-5 px-3 lg:px-5 flex items-center gap-10 lg:gap-20 text-xs md:text-sm lg:text-base overflow-hidden"
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
+              <div>
+                <Link
+                  to="/collection"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "instant" })
+                  }
                 >
-                  {/* Background animation */}
-                  <span
-                    className={`absolute inset-0 bg-black transform ${
-                      isHovered ? "translate-x-0" : "-translate-x-full"
-                    } transition-transform duration-500 ease-out`}
-                  />
-                  {/* Text content */}
-                  <span
-                    className={`relative z-10 transition-colors duration-500 ${
-                      isHovered ? "text-white" : "text-black"
-                    }`}
+                  <button
+                    className="relative text-black font-nexabold py-3 lg:py-5 px-3 lg:px-5 flex items-center gap-10 lg:gap-20 text-sm lg:text-base overflow-hidden"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
                   >
-                    DISCOVER MORE
-                  </span>
-                  {/* Icon */}
-                  <img
-                    src={isHovered ? whitearrowbtn : arrowbtn}
-                    alt=""
-                    className="relative z-10"
-                  />
-                </button>
-              </Link>
+                    {/* Background animation */}
+                    <span
+                      className={`absolute inset-0 bg-black transform ${
+                        isHovered ? "translate-x-0" : "-translate-x-full"
+                      } transition-transform duration-500 ease-out`}
+                    />
+                    {/* Text content */}
+                    <span
+                      className={`relative z-10 transition-colors duration-500 ${
+                        isHovered ? "text-white" : "text-black"
+                      }`}
+                    >
+                      DISCOVER MORE
+                    </span>
+                    {/* Icon */}
+                    <img
+                      src={isHovered ? whitearrowbtn : arrowbtn}
+                      alt=""
+                      className="relative z-10"
+                    />
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -74,37 +78,41 @@ const Product = () => {
                 Discover the handcrafted amalgamation of tradition art and
                 age-old craftmanship with tendy styles and silhouettes.{" "}
               </p>
-              <Link
-                to="/collection"
-                onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
-              >
-                <button
-                  className="relative text-black font-nexabold py-3 lg:py-5 px-3 lg:px-5 flex items-center gap-10 lg:gap-20 text-xs md:text-sm lg:text-base overflow-hidden"
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
+              <div>
+                <Link
+                  to="/collection"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "instant" })
+                  }
                 >
-                  {/* Background animation */}
-                  <span
-                    className={`absolute inset-0 bg-black transform ${
-                      isHovering ? "translate-x-0" : "-translate-x-full"
-                    } transition-transform duration-500 ease-out`}
-                  />
-                  {/* Text content */}
-                  <span
-                    className={`relative z-10 transition-colors duration-500 ${
-                      isHovering ? "text-white" : "text-black"
-                    }`}
+                  <button
+                    className="relative text-black font-nexabold py-3 lg:py-5 px-3 lg:px-5 flex items-center gap-10 lg:gap-20 text-sm lg:text-base overflow-hidden"
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
                   >
-                    DISCOVER MORE
-                  </span>
-                  {/* Icon */}
-                  <img
-                    src={isHovering ? whitearrowbtn : arrowbtn}
-                    alt=""
-                    className="relative z-10"
-                  />
-                </button>
-              </Link>
+                    {/* Background animation */}
+                    <span
+                      className={`absolute inset-0 bg-black transform ${
+                        isHovering ? "translate-x-0" : "-translate-x-full"
+                      } transition-transform duration-500 ease-out`}
+                    />
+                    {/* Text content */}
+                    <span
+                      className={`relative z-10 transition-colors duration-500 ${
+                        isHovering ? "text-white" : "text-black"
+                      }`}
+                    >
+                      DISCOVER MORE
+                    </span>
+                    {/* Icon */}
+                    <img
+                      src={isHovering ? whitearrowbtn : arrowbtn}
+                      alt=""
+                      className="relative z-10"
+                    />
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
 

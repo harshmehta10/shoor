@@ -9,6 +9,8 @@ import location from "../../../assets/SVG/location.svg";
 import cart from "../../../assets/SVG/cart.svg";
 
 const Mobile = ({ isOpen, toggle }) => {
+  const storedUser = localStorage.getItem("user");
+  const user = storedUser ? JSON.parse(storedUser) : null;
   const navbar = [
     {
       path: "/elite",
@@ -16,7 +18,7 @@ const Mobile = ({ isOpen, toggle }) => {
     },
     {
       path: "/classic",
-      Element: "Classic Footwear",
+      Element: "Traditional Wear",
     },
     {
       path: "/organic",
@@ -67,14 +69,24 @@ const Mobile = ({ isOpen, toggle }) => {
           </ul>
         </div>
 
-        <div className="flex gap-4 itmes-center">
-          <img src={iconlogin} alt="" />
-          <Link
-            to="/login"
-            onClick={() => window.scrollTo({ behavior: "smooth" })}
-          >
-            <p className="font-nexaReg text-base text-white">Login/Register</p>
-          </Link>
+        <div className="flex gap-4 items-center">
+          <img src={iconlogin} alt="User Icon" />
+          {user ? (
+            // If the user is logged in, show their name (or email)
+            <p className="font-nexaReg text-base text-white">
+              {user.name || user.email}
+            </p>
+          ) : (
+            // Otherwise, display the Login/Register link
+            <Link
+              to="/login"
+              onClick={() => window.scrollTo({ behavior: "smooth" })}
+            >
+              <p className="font-nexaReg text-base text-white">
+                Login/Register
+              </p>
+            </Link>
+          )}
         </div>
       </div>
     </div>

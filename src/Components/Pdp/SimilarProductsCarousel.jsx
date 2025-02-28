@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { Link } from "react-router";
-import kurta from "../../assets/Images/Collection/kurta.png";
+import Banwery from "../../assets/Images/Elite/Banwery.jpeg";
 import kurta1 from "../../assets/Images/Collection/kurta1.jpg";
 import kurta2 from "../../assets/Images/Collection/kurta2.webp";
 import kurta3 from "../../assets/Images/Collection/kurta3.webp";
@@ -16,7 +16,7 @@ const SimilarProductsCarousel = () => {
   const kurtaData = [
     {
       id: 1,
-      icon: kurta,
+      icon: Banwery,
       title: "Classic Kurta",
       price: "₹ 1600",
       description: "Elegant and stylish",
@@ -106,7 +106,8 @@ const SimilarProductsCarousel = () => {
         {kurtaData.map((item) => (
           <div
             key={item.id}
-            className="py-10 hover:scale-105 duration-500 ease-in-out "
+            className="py-10 hover:scale-105 duration-500 ease-in-out"
+            onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
           >
             <Link to={`/Pdp/${item.id}`} className="space-y-2">
               <img

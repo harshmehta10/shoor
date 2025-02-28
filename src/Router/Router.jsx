@@ -15,6 +15,7 @@ const ForgetPass = lazy(() => import("../Components/Login/ForgetPass"));
 const EliteApparel = lazy(() => import("../Components/Elite/EliteApparel"));
 const Classic = lazy(() => import("../Components/Classic/Classic"));
 import { kurtaData } from "../Utlis/kurtaData";
+const Organicpage = lazy(() => import("../Components/Organic/Organicpage"));
 const Checkout = lazy(() => import("../Views/Pages/Checkout/Checkout"));
 const OrderPlaced = lazy(() =>
   import("../Views/Pages/OrderPlaced/OrderPlaced")
@@ -55,7 +56,7 @@ const Router = () => {
           path: "/organic",
           element: (
             <Suspense fallback={<Loader />}>
-              <Classic />
+              <Organicpage />
             </Suspense>
           ),
         },

@@ -1,5 +1,5 @@
 import { useState, React } from "react";
-import kurta from "../../assets/Images/Collection/kurta.png";
+import Banwery from "../../assets/Images/Elite/Banwery.jpeg";
 import kurta1 from "../../assets/Images/Collection/kurta1.jpg";
 import kurta2 from "../../assets/Images/Collection/kurta2.webp";
 import kurta3 from "../../assets/Images/Collection/kurta3.webp";
@@ -11,7 +11,7 @@ const SaarKurta = () => {
   const kurtaData = [
     {
       id: 1,
-      icon: kurta,
+      icon: Banwery,
       title: "Classic Kurta",
       price: "₹ 1600",
       description: "Elegant and stylish",

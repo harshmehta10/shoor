@@ -107,7 +107,7 @@ const BlackHeader = () => {
             </Link>
             <Link to="/classic">
               <h1 className="text-black font-nexaReg text-14">
-                CLASSIC FOOTWEAR
+                TRADITIONAL WEAR
               </h1>
             </Link>
             <Link to="/organic">

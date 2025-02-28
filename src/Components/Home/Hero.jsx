@@ -104,9 +104,7 @@ const Hero = () => {
             <h1 className="text-white font-nexaReg text-14 ">ELITE APPAREL</h1>
           </Link>
           <Link to="/classic">
-            <h1 className="text-white font-nexaReg text-14">
-              CLASSIC FOOTWEAR
-            </h1>
+            <h1 className="text-white font-nexaReg text-14">TRADITIONAL WEAR</h1>
           </Link>
           <Link to="/organic">
             <h1 className="text-white font-nexaReg text-14">
