@@ -4,6 +4,7 @@ import pic2 from "../../assets/Images/Home/pic2.png";
 import pic3 from "../../assets/Images/Home/pic3.png";
 import pic4 from "../../assets/Images/Home/pic4.png";
 import rgtbtn from "../../assets/SVG/rgtbtn.svg";
+import { Link } from "react-router";
 
 const Gallery = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -50,29 +51,34 @@ const Gallery = () => {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="relative z-10 space-y-48 flex flex-col">
-                <div className="pt-3 pl-3 space-y-2">
-                  <h1 className="font-nexabold  lg:text-[10px] text-white">
-                    {items.heading}
-                  </h1>
-                  <p className="font-nexalight text-xl leading-none text-white max-w-40">
-                    {items.para}
-                  </p>
+              <Link
+                to="/collection"
+                onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
+              >
+                <div className="relative z-10 space-y-48 flex flex-col">
+                  <div className="pt-3 pl-3 space-y-2">
+                    <h1 className="font-nexabold  lg:text-[10px] text-white">
+                      {items.heading}
+                    </h1>
+                    <p className="font-nexalight text-xl leading-none text-white max-w-40">
+                      {items.para}
+                    </p>
+                  </div>
+                  <div className="self-end pr-5 pb-8 lg:pb-5">
+                    <button className="flex gap-7 font-nexabold text-sm text-white items-center">
+                      {items.btn}
+                      <img src={items.rightbtn} />
+                    </button>
+                  </div>
                 </div>
-                <div className="self-end pr-5 pb-8 lg:pb-5">
-                  <button className="flex gap-7 font-nexabold text-sm text-white items-center">
-                    {items.btn}
-                    <img src={items.rightbtn} />
-                  </button>
+                <div className="absolute inset-0 z-0">
+                  <img
+                    src={items.img}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              </div>
-              <div className="absolute inset-0 z-0">
-                <img
-                  src={items.img}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              </Link>
             </div>
           ))}
           {/* md:w-[326px] lg:w-[380px] xl:w-[326px] h-[330px] md:h-[330px] lg:h-[380px] xl:h-auto */}

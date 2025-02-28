@@ -2,24 +2,29 @@ import React, { useState } from "react";
 import logoblack from "../../assets/SVG/logoblack.svg";
 import { Link } from "react-router-dom";
 import arrowrightwhite from "../../assets/SVG/arrowrightwhite.svg";
+import { useNavigate } from "react-router-dom";
 
 const Log = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (
       storedUser &&
-      storedUser.username === username &&
+      storedUser.email === email &&
       storedUser.password === password
     ) {
       setMessage("Login successful!");
-      // Proceed with your login flow (e.g., update global state, redirect, etc.)
+      // Redirect to the collection page
+
+      // ...
+      navigate("/collection");
     } else {
-      setMessage("Invalid username or password.");
+      setMessage("Invalid email or password.");
     }
   };
 
@@ -53,8 +58,8 @@ const Log = () => {
               Email
               <input
                 type="email"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className="mt-1 border-b border-black outline-none focus:border-gray-500"
               />

@@ -1,34 +1,45 @@
-import { useState } from "react";
-import React from "react";
-import kurta from "../../assets/Images/Collection/kurta.png";
+import React, { useState } from "react";
 import arrowbtn from "../../assets/SVG/arrowbtn.svg";
 import whitearrowbtn from "../../assets/SVG/whitearrowbtn.svg";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../app/cartSlice";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const Overview = ({ id, icon, title, price, description }) => {
   const size = ["S", "M", "L", "XL", "XXL"];
   const [selectedSize, setSelectedSize] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showAddedPopup, setShowAddedPopup] = useState(false);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleAddToCart = ({ id, icon, title, price, description }) => {
-    setShowPopup(true);
-    // Hide the popup after 2 seconds
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 2000);
-    console.log({ id, icon, title, price, description });
+    // Debug log to see if function is called
+    console.log("Add to cart clicked");
+
+    // Check if the user is logged in (assuming a user is stored under "user" in localStorage)
+    const user = localStorage.getItem("user");
+    console.log("User from localStorage:", user);
+    if (!user) {
+      console.log(user);
+      setShowLoginPopup(true);
+      return;
+    }
+
+    // If logged in, add the item to the cart and show the success popup
+    setShowAddedPopup(true);
     dispatch(addToCart({ id, icon, title, price, description }));
+
+    setTimeout(() => {
+      setShowAddedPopup(false);
+    }, 2000);
   };
 
   return (
     <div>
-      {/* Popup centered on the screen */}
-      {showPopup && (
+      {/* Popup when item is added to cart */}
+      {showAddedPopup && (
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black text-white py-2 px-4 rounded shadow flex items-center z-50">
           Added to Cart!
           <div className="ml-2">
@@ -50,12 +61,34 @@ const Overview = ({ id, icon, title, price, description }) => {
         </div>
       )}
 
+      {/* Popup prompting the user to login */}
+      {showLoginPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded shadow text-center">
+            <p className="mb-4">You need to login first.</p>
+            <Link
+              to="/login"
+              onClick={() => setShowLoginPopup(false)}
+              className="inline-block bg-black text-white py-2 px-4 rounded"
+            >
+              Login
+            </Link>
+            <button
+              onClick={() => setShowLoginPopup(false)}
+              className="mt-4 text-sm text-gray-600 block"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden space-y-20 lg:space-y-44">
         <div className="flex flex-col lg:flex-row gap-10 lg:justify-around xl:justify-around space-y-2">
           <div>
             <img
               src={icon}
-              alt="kurtaimg"
+              alt="Product"
               className="w-[350px] h-[500px] lg:w-[402px] lg:h-[593px]"
             />
           </div>
@@ -89,7 +122,7 @@ const Overview = ({ id, icon, title, price, description }) => {
                     }`}
                   >
                     <h1
-                      className={`font-nexabold  ${
+                      className={`font-nexabold ${
                         selectedSize === item ? "text-white" : ""
                       }`}
                     >
