@@ -10,7 +10,7 @@ import kurta7 from "../../assets/Images/Collection/kurta7.jpg";
 import kurta7arms from "../../assets/Images/Collection/kurta7arms.webp";
 import kurta7back from "../../assets/Images/Collection/kurta7back.avif";
 import kurta7chest from "../../assets/Images/Collection/kurta7chest.avif";
-import kurta7legs from "../../assets/Images/Collection/kurta7legs.avif";
+import kurta10 from "../../assets/Images/Home/kurta10.jpg";
 import kurta8 from "../../assets/Images/Collection/kurta8.jpg";
 
 const Summercollection = () => {
@@ -82,7 +82,7 @@ const Summercollection = () => {
             className="w-[400px]  lg:w-[800px] h-[320px] object-cover"
           />
           <img
-            src={kurta7legs}
+            src={kurta10}
             alt="kurtalegs"
             className="w-[150px] lg:w-[488px] h-[320px] object-cover object-bottom"
           />

@@ -4,6 +4,8 @@ import hero4 from "../../assets/Images/Home/hero4.png";
 import arrowbtn from "../../assets/SVG/arrowbtn.svg";
 import whitearrowbtn from "../../assets/SVG/whitearrowbtn.svg";
 import { Link } from "react-router";
+import shopping from "../../assets/Images/Home/shopping.webp";
+import kurta10 from "../../assets/Images/Home/kurta10.jpg";
 
 const Product = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -14,7 +16,11 @@ const Product = () => {
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden space-y-20 lg:space-y-44">
         <div className="grid grid-cols-1 gap-10 lg:gap-0 md:grid-cols-2  bg-[#FAFAFA] ">
           <div>
-            <img src={hero3} alt="" className="object-cover h-full" />
+            <img
+              src={shopping}
+              alt=""
+              className="object-cover size-[400px] md:size-[500px] lg:size-[675px] object-top"
+            />
           </div>
           <div className="relative z-50 space-y-5 py-10 px-10 xl:px-20 flex flex-col justify-center ">
             <h1 className="font-nexabold text-14 ">SPRING SUMMER</h1>
@@ -117,7 +123,11 @@ const Product = () => {
           </div>
 
           <div>
-            <img src={hero4} alt="" className="object-cover h-full" />
+            <img
+              src={kurta10}
+              alt=""
+              className="object-cover size-[400px] md:size-[500px] lg:size-[675px] object-top"
+            />
           </div>
         </div>
       </div>

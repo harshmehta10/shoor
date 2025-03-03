@@ -1,8 +1,8 @@
 import { useState, React } from "react";
-import pic1 from "../../assets/Images/Home/pic1.png";
-import pic2 from "../../assets/Images/Home/pic2.png";
-import pic3 from "../../assets/Images/Home/pic3.png";
-import pic4 from "../../assets/Images/Home/pic4.png";
+import kurta9 from "../../assets/Images/pdp/kurta9.webp";
+import kurta10 from "../../assets/Images/pdp/kurta10.webp";
+import kurta3 from "../../assets/Images/Collection/kurta3.webp";
+import kurta4 from "../../assets/Images/Collection/kurta4.webp";
 import rgtbtn from "../../assets/SVG/rgtbtn.svg";
 import { Link } from "react-router";
 
@@ -14,28 +14,28 @@ const Gallery = () => {
       heading: "Spring Summer",
       btn: "VIEW ALL",
       rightbtn: rgtbtn,
-      img: pic1,
+      img: kurta9,
     },
     {
       para: "Saar bringing retro back",
       heading: "Spring Summer",
       btn: "VIEW ALL",
       rightbtn: rgtbtn,
-      img: pic2,
+      img: kurta10,
     },
     {
       para: "Saar bringing retro back",
       heading: "Spring Summer",
       btn: "VIEW ALL",
       rightbtn: rgtbtn,
-      img: pic3,
+      img: kurta3,
     },
     {
       para: "Saar bringing retro back",
       heading: "Spring Summer",
       btn: "VIEW ALL",
       rightbtn: rgtbtn,
-      img: pic4,
+      img: kurta4,
     },
   ];
   return (
@@ -71,12 +71,14 @@ const Gallery = () => {
                     </button>
                   </div>
                 </div>
+
                 <div className="absolute inset-0 z-0">
                   <img
                     src={items.img}
                     alt=""
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
+                  <div className="absolute inset-0 bg-black opacity-30"></div>
                 </div>
               </Link>
             </div>
