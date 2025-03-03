@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import plus from "../../assets/SVG/plus.svg";
 import minus from "../../assets/SVG/minus.svg";
 import crossbtn from "../../assets/SVG/crossbtn.svg";
@@ -16,6 +16,7 @@ const Cart = ({ isOpen, toggle }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   const dispatch = useDispatch();
+  const cartRef = useRef(null);
 
   const handleRemove = (id) => {
     console.log("remove");
@@ -38,14 +39,32 @@ const Cart = ({ isOpen, toggle }) => {
     } else {
       document.body.style.overflow = "";
     }
-    // Clean up in case the component unmounts
     return () => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
 
+  // Close the cart when clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cartRef.current && !cartRef.current.contains(event.target)) {
+        toggle();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, toggle]);
+
   return (
-    <div className="absolute z-[999] -top-5 lg:-top-2 -right-5 lg:-right-5 bg-white w-[300px] lg:w-[500px] h-[600px]">
+    <div
+      ref={cartRef}
+      className="absolute z-[999] -top-5 lg:-top-2 -right-5 lg:-right-5 bg-white w-[300px] lg:w-[500px] h-[600px]"
+    >
       <div className="absolute top-5 lg:top-0 -left-5">
         <img
           src={closebtn}
