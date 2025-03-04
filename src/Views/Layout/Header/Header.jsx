@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import logo from "../../../assets/SVG/logo.svg";
 import { Link } from "react-router";
 import Mobile from "./Mobile";
-import questionmark from "../../../assets/SVG/questionmark.svg";
-import location from "../../../assets/SVG/location.svg";
 import cart from "../../../assets/SVG/cart.svg";
 import Cart from "../../../Components/Cart/Cart";
 import { useSelector } from "react-redux";

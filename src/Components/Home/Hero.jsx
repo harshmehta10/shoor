@@ -99,19 +99,31 @@ const Hero = () => {
       </button>
 
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-28 sm:py-20   flex flex-col items-center space-y-11">
-        <div className="relative z-50 flex flex-col lg:flex-row justify-center  items-center gap-12 text-center md:text-start">
-          <Link to="/elite">
-            <h1 className="text-white font-nexaReg text-14 ">ELITE APPAREL</h1>
+        <div className="relative z-50 flex flex-col lg:flex-row justify-center items-center gap-12 text-center md:text-start">
+          <Link to="/elite" className="group">
+            <span className="relative inline-block">
+              <h1 className="text-white font-nexaReg text-14">ELITE APPAREL</h1>
+              <span className="absolute left-0 -bottom-1 h-0.5 bg-white transition-all duration-500 w-0 group-hover:w-full"></span>
+            </span>
           </Link>
-          <Link to="/classic">
-            <h1 className="text-white font-nexaReg text-14">TRADITIONAL WEAR</h1>
+          <Link to="/classic" className="group">
+            <span className="relative inline-block">
+              <h1 className="text-white font-nexaReg text-14">
+                TRADITIONAL WEAR
+              </h1>
+              <span className="absolute left-0 -bottom-1 h-0.5 bg-white transition-all duration-500 w-0 group-hover:w-full"></span>
+            </span>
           </Link>
-          <Link to="/organic">
-            <h1 className="text-white font-nexaReg text-14">
-              ORGANIC GROOMING
-            </h1>
+          <Link to="/organic" className="group">
+            <span className="relative inline-block">
+              <h1 className="text-white font-nexaReg text-14">
+                ORGANIC GROOMING
+              </h1>
+              <span className="absolute left-0 -bottom-1 h-0.5 bg-white transition-all duration-500 w-0 group-hover:w-full"></span>
+            </span>
           </Link>
         </div>
+
         <div className="h-12 lg:h-24 w-[1px] lg:w-0.5 bg-white relative z-50 shrink-0 "></div>
         <div className="relative z-50 space-y-4 lg:space-y-7 flex flex-col justify-center items-center py">
           <h1 className=" text-white font-nexabold text-14 text-center">

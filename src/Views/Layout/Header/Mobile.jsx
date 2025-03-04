@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import logo from "../../../assets/SVG/logo.svg";
 import closebtn from "../../../assets/SVG/closebtn.svg";
 import iconlogin from "../../../assets/SVG/iconlogin.svg";
@@ -56,15 +56,26 @@ const Mobile = ({ isOpen, toggle }) => {
         </div>
         <div>
           <ul className="flex flex-col space-y-16">
-            {navbar.map((items, idx) => (
-              <Link
-                to={items.path}
-                key={items.Element}
+            {navbar.map((item, idx) => (
+              <NavLink
+                key={item.Element}
+                to={item.path}
                 onClick={toggle}
-                className="font-nexaReg text-4xl text-white  transition-all duration-500 relative group"
+                className="group"
               >
-                {items.Element}
-              </Link>
+                {({ isActive }) => (
+                  <span className="relative inline-block">
+                    <span className="font-nexaReg text-4xl text-white transition-all duration-500">
+                      {item.Element}
+                    </span>
+                    <span
+                      className={`absolute left-0 -bottom-1 h-0.5 bg-white transition-all duration-500 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    ></span>
+                  </span>
+                )}
+              </NavLink>
             ))}
           </ul>
         </div>

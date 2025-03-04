@@ -1,25 +1,28 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import plus from "../../assets/SVG/plus.svg";
 import minus from "../../assets/SVG/minus.svg";
 import crossbtn from "../../assets/SVG/crossbtn.svg";
 import arrowrightwhite from "../../assets/SVG/arrowrightwhite.svg";
 import closebtn from "../../assets/SVG/closebtn.svg";
-import { useSelector, useDispatch } from "react-redux";
 import {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
 } from "../../app/cartSlice";
-import { Link } from "react-router";
 
 const Cart = ({ isOpen, toggle }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+  // Use optional chaining to safely access user
+  const user = useSelector((state) => state.auth?.user);
   const dispatch = useDispatch();
   const cartRef = useRef(null);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const navigate = useNavigate();
 
   const handleRemove = (id) => {
-    console.log("remove");
     dispatch(removeFromCart(id));
   };
 
@@ -34,11 +37,7 @@ const Cart = ({ isOpen, toggle }) => {
 
   // Disable background scrolling when the cart is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -60,6 +59,14 @@ const Cart = ({ isOpen, toggle }) => {
     };
   }, [isOpen, toggle]);
 
+  const handleCheckout = () => {
+    if (!user) {
+      setShowLoginPopup(true);
+    } else {
+      navigate("/checkout");
+    }
+  };
+
   return (
     <div
       ref={cartRef}
@@ -79,8 +86,8 @@ const Cart = ({ isOpen, toggle }) => {
         </div>
       ) : (
         isOpen && (
-          <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden space-y-10">
-            <div>
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 py-7 sm:py-14 overflow-hidden space-y-5">
+            <div className="">
               <h1 className="font-nexaReg text-sm lg:text-base text-center">
                 Your shopping cart ({totalItems} items)
               </h1>
@@ -104,7 +111,7 @@ const Cart = ({ isOpen, toggle }) => {
                       <img
                         src={item.icon}
                         alt={item.title}
-                        className="w-20 h-24"
+                        className="object-cover h-[100px] w-auto"
                       />
                     </div>
                     <div className="space-y-1">
@@ -123,7 +130,7 @@ const Cart = ({ isOpen, toggle }) => {
                       <div className="flex gap-20">
                         <div className="flex gap-5 items-center">
                           <div
-                            className="w-3 cursor-pointer"
+                            className=" cursor-pointer"
                             onClick={() => dispatch(decreaseQuantity(item.id))}
                           >
                             <img src={minus} alt="Decrease quantity" />
@@ -162,11 +169,37 @@ const Cart = ({ isOpen, toggle }) => {
               </div>
             )}
 
-            <Link to="/checkout">
-              <button className="flex justify-center bg-black text-white py-4 w-full gap-16 font-nexabold text-base">
-                Checkout <img src={arrowrightwhite} alt="Checkout" />
-              </button>
-            </Link>
+            {/* Popup prompting the user to login */}
+            {showLoginPopup && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-hidden">
+                <div className="bg-white p-6 rounded shadow text-center">
+                  <p className="mb-4">You need to login first.</p>
+                  <button
+                    onClick={() => {
+                      setShowLoginPopup(false);
+                      navigate("/login");
+                    }}
+                    className="inline-block bg-black text-white py-2 px-4 rounded"
+                  >
+                    Login
+                  </button>
+                  <button
+                    onClick={() => setShowLoginPopup(false)}
+                    className="mt-4 text-sm text-gray-600 block"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Checkout button */}
+            <button
+              onClick={handleCheckout}
+              className="flex justify-center bg-black text-white py-4 w-full gap-16 font-nexabold text-base"
+            >
+              Checkout <img src={arrowrightwhite} alt="Checkout" />
+            </button>
           </div>
         )
       )}

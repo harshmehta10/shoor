@@ -16,7 +16,7 @@ const Footer = () => {
               <h1 className="text-white cursor-pointer text-footer font-nexabold">
                 COUNTRY/REGION
               </h1>
-              <p className="text-white cursor-pointer flex items-center gap-2 text-14 font-nexalight">
+              <p className="text-white cursor-pointer hover:underline flex items-center gap-2 text-14 font-nexalight">
                 India
                 <div>
                   <img src={downarrow} alt="downarrow" />
@@ -25,7 +25,7 @@ const Footer = () => {
             </div>
             <div className="space-y-5">
               <h1 className="text-white cursor-pointer">LANGUAGE</h1>
-              <p className="text-white  cursor-pointer flex items-center gap-2 text-14 font-nexalight">
+              <p className="text-white  cursor-pointer hover:underline flex items-center gap-2 text-14 font-nexalight">
                 English
                 <div>
                   <img src={downarrow} alt="downarrow" />
@@ -39,36 +39,36 @@ const Footer = () => {
               CUSTOMER CARE
             </h1>
             <div className="space-y-2">
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Login/Register
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Customer Servicer
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Shipping Info
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Contact us
               </h1>
             </div>
           </div>
 
           <div className="space-y-5 lg:space-y-10">
-            <h1 className="text-white cursor-pointer text-footer font-nexabold">
+            <h1 className="text-white cursor-pointer  text-footer font-nexabold">
               OUR POLICIES
             </h1>
             <div className="space-y-2">
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Privacy Policies
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Terms & Conditions
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Cookies
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Accessibility
               </h1>
             </div>
@@ -79,25 +79,25 @@ const Footer = () => {
               OUR COMPANY
             </h1>
             <div className="space-y-2">
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Become a Retailer
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Press
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Corporate
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Investors
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Careers
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Partners
               </h1>
-              <h1 className="text-white cursor-pointer text-14 font-nexalight">
+              <h1 className="text-white cursor-pointer hover:underline text-14 font-nexalight">
                 Latest Magazine
               </h1>
             </div>
@@ -108,27 +108,27 @@ const Footer = () => {
               <img
                 src={facebook}
                 alt="facebook icon"
-                className="size-8 lg:size-11 cursor-pointer"
+                className="size-8 lg:size-11 cursor-pointer  "
               />
               <img
                 src={instagram}
                 alt="instagram icon"
-                className="size-8 lg:size-11 cursor-pointer"
+                className="size-8 lg:size-11 cursor-pointer "
               />
               <img
                 src={twitter}
                 alt="twitter icon"
-                className="size-8 lg:size-11 cursor-pointer"
+                className="size-8 lg:size-11 cursor-pointer "
               />
               <img
                 src={youtube}
                 alt="youtube icon"
-                className="size-8 lg:size-11 cursor-pointer"
+                className="size-8 lg:size-11 cursor-pointer "
               />
               <img
                 src={pintrust}
                 alt="pintrust icon"
-                className="size-8 lg:size-11 cursor-pointer"
+                className="size-8 lg:size-11 cursor-pointer "
               />
             </div>
             <h1 className="text-white font-Robotolight text-14"> © SHOOR</h1>

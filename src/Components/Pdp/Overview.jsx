@@ -3,37 +3,21 @@ import arrowbtn from "../../assets/SVG/arrowbtn.svg";
 import whitearrowbtn from "../../assets/SVG/whitearrowbtn.svg";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../app/cartSlice";
-import { Link } from "react-router-dom";
 
 const Overview = ({ id, icon, title, price, description }) => {
   const size = ["S", "M", "L", "XL", "XXL"];
   const [selectedSize, setSelectedSize] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const [showAddedPopup, setShowAddedPopup] = useState(false);
-  const [showLoginPopup, setShowLoginPopup] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleAddToCart = ({ id, icon, title, price, description }) => {
-    // Debug log to see if function is called
     console.log("Add to cart clicked");
-
-    // Check if the user is logged in (assuming a user is stored under "user" in localStorage)
-    const user = localStorage.getItem("user");
-    console.log("User from localStorage:", user);
-    if (!user) {
-      console.log(user);
-      setShowLoginPopup(true);
-      return;
-    }
-
-    // If logged in, add the item to the cart and show the success popup
-    setShowAddedPopup(true);
     dispatch(addToCart({ id, icon, title, price, description }));
-
-    setTimeout(() => {
-      setShowAddedPopup(false);
-    }, 2000);
+    setShowAddedPopup(true);
+    // Hide the popup after 2 seconds
+    setTimeout(() => setShowAddedPopup(false), 2000);
   };
 
   return (
@@ -57,28 +41,6 @@ const Overview = ({ id, icon, title, price, description }) => {
                 d="m4.5 12.75 6 6 9-13.5"
               />
             </svg>
-          </div>
-        </div>
-      )}
-
-      {/* Popup prompting the user to login */}
-      {showLoginPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded shadow text-center">
-            <p className="mb-4">You need to login first.</p>
-            <Link
-              to="/login"
-              onClick={() => setShowLoginPopup(false)}
-              className="inline-block bg-black text-white py-2 px-4 rounded"
-            >
-              Login
-            </Link>
-            <button
-              onClick={() => setShowLoginPopup(false)}
-              className="mt-4 text-sm text-gray-600 block"
-            >
-              Cancel
-            </button>
           </div>
         </div>
       )}

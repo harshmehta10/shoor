@@ -4,10 +4,11 @@ import questionmarkblack from "../../../assets/SVG/questionmarkblack.svg";
 import blackcart from "../../../assets/SVG/blackcart.svg";
 import Mobile from "./Mobile";
 import Cart from "../../../Components/Cart/Cart";
-import { Link } from "react-router";
+import { Link, useLocation, NavLink } from "react-router";
 import { useSelector } from "react-redux";
 
 const BlackHeader = () => {
+  const location = useLocation(); // Get the current path
   const [menu, setMenu] = useState(false);
   const toggle = () => {
     setMenu(!menu);
@@ -100,21 +101,42 @@ const BlackHeader = () => {
             </div>
           </nav>
           <div className="flex justify-center  items-center gap-12 text-center md:text-start border py-4 w-full">
-            <Link to="/elite">
-              <h1 className="text-black font-nexaReg text-14 ">
-                ELITE APPAREL
-              </h1>
-            </Link>
-            <Link to="/classic">
-              <h1 className="text-black font-nexaReg text-14">
-                TRADITIONAL WEAR
-              </h1>
-            </Link>
-            <Link to="/organic">
-              <h1 className="text-black font-nexaReg text-14">
-                ORGANIC GROOMING
-              </h1>
-            </Link>
+            <NavLink to="/elite" className="relative group">
+              {({ isActive }) => (
+                <h1 className="text-black font-nexaReg text-14 transition-all duration-500">
+                  ELITE APPAREL
+                  <span
+                    className={`h-0.5 transition-all duration-500 bg-black absolute -bottom-1 left-0 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  ></span>
+                </h1>
+              )}
+            </NavLink>
+            <NavLink to="/classic" className="relative group">
+              {({ isActive }) => (
+                <h1 className="text-black font-nexaReg text-14 transition-all duration-500">
+                  TRADITIONAL WEAR
+                  <span
+                    className={`h-0.5 transition-all duration-500 bg-black absolute -bottom-1 left-0 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  ></span>
+                </h1>
+              )}
+            </NavLink>
+            <NavLink to="/organic" className="relative group">
+              {({ isActive }) => (
+                <h1 className="text-black font-nexaReg text-14 transition-all duration-500">
+                  ORGANIC GROOMING
+                  <span
+                    className={`h-0.5 transition-all duration-500 bg-black absolute -bottom-1 left-0 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  ></span>
+                </h1>
+              )}
+            </NavLink>
           </div>
         </div>
       </div>
